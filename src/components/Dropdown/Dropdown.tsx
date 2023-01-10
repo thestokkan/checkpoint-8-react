@@ -2,22 +2,21 @@ import './Dropdown.css';
 import React from "react";
 
 type DropdownProps = {
-    onClick: () => void;
     text: string;
-    alt1: string;
-    alt2: string;
-    alt3: string;
+    opt1: string;
+    opt2: string;
+    opt3: string;
 }
 
-const Dropdown = ({onClick, text, alt1, alt2, alt3}: DropdownProps) => {
+const Dropdown = ({text, opt1, opt2, opt3}: DropdownProps) => {
     return (
-        <div className="dropdown">
-            <button onClick={onClick} className="dropdown">{text}</button>
-            <div className="dropdown-content">
-                <a href="#">{alt1}</a>
-                <a href="#">{alt2}</a>
-                <a href="#">{alt3}</a>
-            </div>
+        <div className="select-div">
+            <label className="select-label"></label>
+            <select>
+                <option>{opt1}</option>
+                <option>{opt2}</option>
+                <option>{opt3}</option>
+            </select>
         </div>
     );
 }

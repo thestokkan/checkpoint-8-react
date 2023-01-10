@@ -27,7 +27,7 @@ function App() {
         setNameInput(event.target.value);
     };
 
-    const [teamInput, setTeamInput] = useState('');
+    const [teamInput, setTeamInput] = useState('blue');
     const openSelect = () => {};
 
     const addPlayer = () => {
@@ -65,6 +65,10 @@ function App() {
             addPlayer();
         }
     };
+
+    const updateScores = (team:string) => {
+
+    }
 
     return (
         <div className="App">
@@ -106,7 +110,7 @@ function App() {
                            value={nameInput}
                     />
                     <p>Player team</p>
-                    {/*<Dropdown onClick={openSelect} text="Player team" alt1="blue" alt2="red" alt3="yellow"></Dropdown>*/}
+                    <Dropdown text="Player Team" opt1="blue" opt2="red" opt3="yellow"></Dropdown>
                     <Button
                         children="Add player"
                         onClick={addPlayer}
@@ -118,7 +122,9 @@ function App() {
                 </div>
                 <h4>Give points to any team!</h4>
                 <div className="button-group flex-row">
-                    <Button id="blue" onClick={() => console.log("Blue!")} type="default">Team Blue</Button>
+                    <Button id="blue" onClick={
+                        () => console.log("Blue!")
+                    } type="default">Team Blue</Button>
                     <Button id="red" onClick={() => console.log("Red!")} type="default">Team Red</Button>
                     <Button id="yellow" onClick={() => console.log("Yellow!")} type="default">Team Yellow</Button>
                     <Button id="any" onClick={() => console.log("Any!")} type="default">Random</Button>

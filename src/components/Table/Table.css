@@ -15,6 +15,7 @@ tr:first-child {
     border-bottom: 1px solid  var(--body-font-color);
 }
 
-th:first-child {
+th:first-child,
+td:first-child {
     text-align: left;
 }
