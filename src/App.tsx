@@ -4,6 +4,14 @@ import {ThemeContext} from "./theme";
 import './theme/variables.css';
 import {FaMoon, FaSun} from "react-icons/fa";
 import {Button, Input, Table, Dropdown} from "./components";
+import {PlayerTable} from "./components/Table";
+
+export type Player = {
+    name: string;
+    team: string;
+    score: number;
+    id: number;
+};
 
 function App() {
     // Theme settings
@@ -19,12 +27,6 @@ function App() {
                 setThemeIcon(<FaSun/>);
             }
         }
-    }
-
-    type Player = {
-        name: string;
-        team: string;
-        score: number;
     }
 
     // Input
@@ -48,7 +50,8 @@ function App() {
         const newPlayer:Player = {
             name: nameInput,
             team: team,
-            score: 0
+            score: 0,
+            id: Date.now() // Yeah, yeah, I know...
         }
 
         players.push(newPlayer);
@@ -112,12 +115,7 @@ function App() {
                     />
                 </div>
                 <div className="scoreboard">
-                    <Table
-                        id="scoretable"
-                        c1="Name"
-                        c2="Team"
-                        c3="Score"
-                    ></Table>
+                    <PlayerTable players={players}></PlayerTable>
                 </div>
                 <h4>Give points to any team!</h4>
                 <div className="button-group flex-row">

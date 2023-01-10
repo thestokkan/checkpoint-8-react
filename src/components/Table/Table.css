@@ -11,7 +11,7 @@ thead {
     font-weight: bold;
 }
 
-tr:first-child {
+thead tr:first-child {
     border-bottom: 1px solid  var(--body-font-color);
 }
 

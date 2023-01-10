@@ -1,26 +1,34 @@
-import './Table.css';
 import React from "react";
+import "./Table.css";
 
-type TableProps = {
-    id?: string;
-    className?: "string";
-    c1: string;
-    c2: string;
-    c3: string
-}
+type PlayerTableProps = {
+    headers: React.ReactNode[];
+    rows: React.ReactNode[][];
+};
 
-const Table = ({id, className, c1, c2, c3}:TableProps) => {
-  return (
-      <table id={id} className={className}>
-          <thead>
-          <tr>
-              <th>{c1}</th>
-              <th>{c2}</th>
-              <th>{c3}</th>
-          </tr>
-          </thead>
-      </table>
-  );
-}
+const Table = ({ headers, rows }: PlayerTableProps) => {
+    return (
+        <table>
+            <thead>
+            <tr>
+                {headers.map((header, index) => {
+                    return <th key={index}>{header}</th>;
+                })}
+            </tr>
+            </thead>
+            <tbody>
+            {rows.map((row, index) => {
+                return (
+                    <tr key={index}>
+                        {row.map((da) => {
+                            return <td>{da}</td>;
+                        })}
+                    </tr>
+                );
+            })}
+            </tbody>
+        </table>
+    );
+};
 
 export default Table;
