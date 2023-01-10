@@ -1,0 +1,20 @@
+table {
+    min-width: 300px;
+    margin: 24px 0;
+    font-size: var(--font-size-body);
+    color: var(--body-font-color);
+    border-collapse: collapse;
+    text-align: right;
+}
+
+thead {
+    font-weight: bold;
+}
+
+tr:first-child {
+    border-bottom: 1px solid  var(--body-font-color);
+}
+
+th:first-child {
+    text-align: left;
+}
