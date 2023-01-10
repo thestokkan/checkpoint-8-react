@@ -99,18 +99,16 @@ function App() {
                 </p>
 
                 <h4>Add a new Player</h4>
-                <p>Player name</p>
                 <div className="add-player">
                     <Input type="text"
-                           className="playerName"
-                           placeholderText=""
+                           className="nameInput"
                            id="name"
                            onChange={handleChange}
                            onKeyDown={handleKeyDown}
                            value={nameInput}
+                           label="Player Name"
                     />
-                    <p>Player team</p>
-                    <Dropdown text="Player Team" opt1="blue" opt2="red" opt3="yellow"></Dropdown>
+                    <Dropdown label="Player Team" opt1="blue" opt2="red" opt3="yellow"></Dropdown>
                     <Button
                         children="Add player"
                         onClick={addPlayer}

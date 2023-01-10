@@ -23,7 +23,7 @@ html {
   margin: 24px 0;
 }
 
-p {
+p, label {
   font-size: var(--font-size-body);
   color: var(--body-font-color);
 }

@@ -6,24 +6,26 @@ interface Props {
     id: string;
     placeholderText?: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    validation?: () => void;
     onKeyDown: (event: React.KeyboardEvent) => void;
     value: string;
+    label: string;
 
 }
 
-const Input = ({type, id, className, placeholderText, onChange, validation, onKeyDown, value}: Props) => {
+const Input = ({type, id, className, placeholderText, onChange, onKeyDown, value, label}: Props) => {
     return (
+        <div className="input-div">
+        <label className="input-label">{label}</label>
         <input
             type={type}
             id={id}
             className={className}
             placeholder={placeholderText}
             onChange={onChange}
-            data-validation={validation}
             onKeyDown={onKeyDown}
             value={value}
         />
+        </div>
     );
 };
 

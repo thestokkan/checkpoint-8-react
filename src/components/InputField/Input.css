@@ -13,7 +13,7 @@ input:hover {
     background-color: var(--hover-color);
 }
 
-.connect-right {
-    border-radius: 12px 0 0 12px;
-    margin-right: 0;
+.input-label {
+    margin: 12px 0;
+    display: block;
 }
