@@ -21,50 +21,40 @@ function App() {
         }
     }
 
+    type Player = {
+        name: string;
+        team: string;
+        score: number;
+    }
+
     // Input
     const [nameInput, setNameInput] = useState('');
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNameInput(event.target.value);
     };
 
-    const [teamInput, setTeamInput] = useState('blue');
-    const openSelect = () => {};
-
-    const addPlayer = () => {
-        setNameInput(nameInput);
-        setTeamInput(teamInput);
-        const table = document.getElementById("scoretable");
-        const row = document.createElement('tr');
-        const col1 = document.createElement('td');
-        const col2 = document.createElement('td');
-        const col3 = document.createElement('td');
-        const nameTextNode = document.createTextNode(nameInput);
-        const teamTextNode = document.createTextNode(teamInput);
-        const scoreTextNode = document.createTextNode('0');
-
-        col1.appendChild(nameTextNode);
-        col2.appendChild(teamTextNode);
-        col3.appendChild(scoreTextNode);
-
-        row.appendChild(col1);
-        row.appendChild(col2);
-        row.appendChild(col3);
-        row.setAttribute('id', nameInput);
-
-        if (table) {
-            table.appendChild(row);
-            document.appendChild(table);
-        }
-    };
+    const [team, setTeam] = useState('blue');
+    const [players, setPlayers] = useState<Player[]>([]);
+    const [winner, setWinner] = useState(false);
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
-        console.log(event.key);
-
         if (event.key === 'Enter') {
             event.preventDefault();
             addPlayer();
         }
     };
+
+    const addPlayer = () => {
+        const newPlayer:Player = {
+            name: nameInput,
+            team: team,
+            score: 0
+        }
+
+        players.push(newPlayer);
+        setPlayers([...players]);
+        console.log(players);
+    }
 
     const updateScores = (team:string) => {
 
@@ -103,12 +93,18 @@ function App() {
                     <Input type="text"
                            className="nameInput"
                            id="name"
-                           onChange={handleChange}
+                           onChange={handleNameChange}
                            onKeyDown={handleKeyDown}
                            value={nameInput}
                            label="Player Name"
                     />
-                    <Dropdown label="Player Team" opt1="blue" opt2="red" opt3="yellow"></Dropdown>
+                    <Dropdown label="Player Team"
+                              opt1="blue"
+                              opt2="red"
+                              opt3="yellow"
+                              value={team}
+                              setValue={setTeam}
+                    ></Dropdown>
                     <Button
                         children="Add player"
                         onClick={addPlayer}
@@ -116,7 +112,12 @@ function App() {
                     />
                 </div>
                 <div className="scoreboard">
-                    <Table id="scoretable" c1="Name" c2="Team" c3="Score"></Table>
+                    <Table
+                        id="scoretable"
+                        c1="Name"
+                        c2="Team"
+                        c3="Score"
+                    ></Table>
                 </div>
                 <h4>Give points to any team!</h4>
                 <div className="button-group flex-row">
